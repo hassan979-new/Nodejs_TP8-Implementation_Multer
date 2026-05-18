@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Démo Upload avec Multer</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/upload.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <p id="status"></p>
+
+    <h1>Téléversement de fichiers avec Multer</h1>
+
+    <!-- Upload simple -->
+    <div class="card">
+      <h2>Upload simple</h2>
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label>Image :</label>
+        <input type="file" name="fichier" required accept="image/*">
+
+        <small>Formats acceptés : JPG, PNG, GIF, WebP (max 5 Mo)</small>
+
+        <button type="submit">Téléverser</button>
+      </form>
+    </div>
+
+    <!-- Upload multiple -->
+    <div class="card">
+      <h2>Upload multiple</h2>
+
+      <form action="/upload-multiple" method="POST" enctype="multipart/form-data">
+        <label>Images :</label>
+        <input type="file" name="fichiers" multiple required accept="image/*">
+
+        <small>Maximum 3 images</small>
+
+        <button type="submit">Téléverser</button>
+      </form>
+    </div>
+
+    <!-- Upload avec métadonnées -->
+    <div class="card">
+      <h2>Upload avec métadonnées</h2>
+
+      <form action="/upload-with-data" method="POST" enctype="multipart/form-data">
+        
+        <label>Titre :</label>
+        <input type="text" name="titre" required>
+
+        <label>Description :</label>
+        <textarea name="description" rows="3"></textarea>
+
+        <label>Image principale :</label>
+        <input type="file" name="image" required accept="image/*">
+
+        <small>Formats acceptés : JPG, PNG, GIF, WebP</small>
+
+        <label>Galerie :</label>
+        <input type="file" name="galerie" multiple accept="image/*">
+
+        <small>Maximum 2 images supplémentaires</small>
+
+        <button type="submit">Téléverser</button>
+      </form>
+    </div>
+
+  </div>
+</body>
+</html>
